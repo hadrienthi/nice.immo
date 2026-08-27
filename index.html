@@ -23,12 +23,13 @@
 }
 *{margin:0;padding:0;box-sizing:border-box}
 ::selection{background:var(--ocean);color:var(--ecume)}
-html,body{background:var(--ecume);color:var(--nuit);font-family:var(--sans)}
+html,body{background:var(--ecume);color:var(--nuit);font-family:var(--sans);overflow-x:hidden}
 header{display:flex;align-items:center;gap:10px;padding:16px 20px;border-bottom:1px solid var(--hairline)}
 .wordmark{font-family:var(--serif);font-size:24px;letter-spacing:.01em}
 .wordmark span{color:var(--ocean)}
 .tag{margin-left:auto;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--nuit-60)}
-main{display:grid;grid-template-columns:1fr;gap:0;max-width:1100px;margin:0 auto;min-height:calc(100vh - 58px)}
+@media(max-width:760px){.tag{display:none}}
+main{display:grid;grid-template-columns:1fr;gap:0;max-width:1100px;margin:0 auto;min-height:calc(100vh - 58px);min-height:calc(100dvh - 58px)}
 @media(min-width:900px){main{grid-template-columns:380px 1fr}}
 /* ---- portrait (photo statique, sans animation : décision du 25/8) ---- */
 .side{display:none}
@@ -40,15 +41,15 @@ main{display:grid;grid-template-columns:1fr;gap:0;max-width:1100px;margin:0 auto
 .side h1{font-family:var(--serif);font-size:30px;font-weight:400;margin-top:18px}
 .side h1 em{color:var(--ocean);font-style:italic}
 .side p{font-size:13.5px;line-height:1.55;color:var(--nuit-60);margin-top:8px;max-width:330px}
-.medaillon{display:flex;align-items:center;gap:12px;padding:14px 18px;border-bottom:1px solid var(--hairline)}
+.medaillon{display:flex;align-items:center;gap:14px;padding:16px 18px;border-bottom:1px solid var(--hairline)}
 @media(min-width:900px){.medaillon{display:none}}
-.medaillon img{width:52px;height:52px;border-radius:50%;object-fit:cover;object-position:top}
-.medaillon .t1{font-family:var(--serif);font-size:19px}
-.medaillon .t2{font-size:12px;color:var(--nuit-60)}
+.medaillon img{width:76px;height:76px;border-radius:50%;object-fit:cover;object-position:top;flex-shrink:0}
+.medaillon .t1{font-family:var(--serif);font-size:23px}
+.medaillon .t2{font-size:12.5px;color:var(--nuit-60);line-height:1.4}
 /* ---- chat ---- */
 .chat{display:flex;flex-direction:column;border-left:1px solid var(--hairline);min-height:0}
 .flux{flex:1;overflow-y:auto;padding:26px 22px 12px;display:flex;flex-direction:column;gap:14px}
-.msg{max-width:82%;padding:11px 15px;border-radius:14px;font-size:14.5px;line-height:1.55;white-space:pre-wrap}
+.msg{max-width:82%;padding:11px 15px;border-radius:14px;font-size:14.5px;line-height:1.55;white-space:pre-wrap;overflow-wrap:break-word}
 .msg.ana{background:#fff;border:1px solid var(--hairline);border-bottom-left-radius:4px;align-self:flex-start}
 .msg.moi{background:var(--nuit);color:var(--ecume);border-bottom-right-radius:4px;align-self:flex-end}
 .msg.sys{background:none;border:1px dashed var(--hairline);color:var(--nuit-60);font-size:12.5px;align-self:center;text-align:center}
@@ -105,7 +106,7 @@ footer details p{margin-top:8px;line-height:1.55}
   <section class="chat">
     <div class="medaillon">
       <img src="assets/portrait-ana.jpg" alt="Ana" onerror="this.style.display='none'">
-      <div><div class="t1">Ana</div><div class="t2">Estimation sur ventes r&#233;elles notari&#233;es</div></div>
+      <div><div class="t1">Ana <em style="font-style:italic;color:var(--ocean)">vous &#233;coute.</em></div><div class="t2">Estimation sur les 40 429&nbsp;ventes r&#233;elles notari&#233;es de Nice</div></div>
     </div>
     <div class="flux" id="flux"></div>
     <div class="attente" id="attente"><i>&#9679;</i> Ana consulte les ventes notari&#233;es&#8230;</div>
