@@ -30,6 +30,11 @@ header{display:flex;align-items:center;gap:10px;padding:16px 20px;border-bottom:
 .tag{margin-left:auto;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--nuit-60)}
 @media(max-width:760px){.tag{display:none}}
 main{display:grid;grid-template-columns:1fr;gap:0;max-width:1100px;margin:0 auto;min-height:calc(100vh - 58px);min-height:calc(100dvh - 58px)}
+/* les enfants de grille et le formulaire héritent d'un min-width:auto qui
+   propage la largeur intrinsèque de la barre de saisie à toute la colonne
+   (débordement mobile du 27/8, mesuré à 427 px pour 390 px d'écran) */
+main>*{min-width:0}
+form{min-width:0}
 @media(min-width:900px){main{grid-template-columns:380px 1fr}}
 /* ---- portrait (photo statique, sans animation : décision du 25/8) ---- */
 .side{display:none}
